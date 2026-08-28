@@ -32,12 +32,8 @@ public class GroupH_Business_Simulator {
             discounted[i] = hasDiscount(i, quantities[i]);
         }
 
-        // Calculate grand total
-        double grandTotal = 0;
-
-        for (int i = 0; i < subtotals.length; i++) {
-            grandTotal = grandTotal + subtotals[i];
-        }
+        // Calculate grand total using a method
+        double grandTotal = calculateGrandTotal(subtotals);
 
         // Print receipt
         printReceipt(items, quantities, subtotals, discounted, grandTotal);
@@ -52,7 +48,6 @@ public class GroupH_Business_Simulator {
 
         // Phone
         if (itemNumber == 0 && quantity >= 2) {
-
             subtotal = subtotal - (subtotal * 0.05);
         }
 
@@ -60,13 +55,11 @@ public class GroupH_Business_Simulator {
 
         // Earphones
         else if (itemNumber == 2 && quantity >= 4) {
-
             subtotal = subtotal - 3000;
         }
 
         // Power Bank
         else if (itemNumber == 3 && quantity >= 3) {
-
             subtotal = subtotal - (subtotal * 0.10);
         }
 
@@ -93,7 +86,20 @@ public class GroupH_Business_Simulator {
         }
     }
 
-    // Method 3: Prints the receipt
+
+    // Method 3: Calculates the grand total
+    public static double calculateGrandTotal(double[] subtotals) {
+
+        double grandTotal = 0;
+
+        for (int i = 0; i < subtotals.length; i++) {
+        grandTotal = grandTotal + subtotals[i];
+        }
+
+    return grandTotal;
+}
+
+    // Method 4: Prints the receipt
     public static void printReceipt(String[] items,
                                     int[] quantities,
                                     double[] subtotals,
@@ -116,12 +122,12 @@ public class GroupH_Business_Simulator {
 
             } else {
 
-               System.out.println(
-        items[i]
-        + " | Qty: " + quantities[i]
-        + " | Subtotal: UGX " + subtotals[i]
-        + " | No Discount"
-);
+                System.out.println(
+                        items[i]
+                        + " | Qty: " + quantities[i]
+                        + " | Subtotal: UGX " + subtotals[i]
+                        + " | No Discount"
+                );
             }
         }
 
